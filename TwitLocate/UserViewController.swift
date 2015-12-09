@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import MapKit
 
-class UserViewController: UIViewController {
+class UserViewController: UIViewController{
 
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var desc: UILabel!
-
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    var tweetCoordinates:CLLocationCoordinate2D!
     var tweet = NSDictionary()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.tweet["user"]!["name"] as? String
         self.desc.text = self.tweet["user"]!["description"] as? String
+        let coordinateArray = self.tweet["geo"]!["coordinates"]! as! NSMutableArray
         
+        let latitude = coordinateArray[0] as! Double
+        let longitude = coordinateArray[1] as! Double
+
+        tweetCoordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        self.prepareMap()
         self.getProfileImage()
 
     }
@@ -33,11 +44,24 @@ class UserViewController: UIViewController {
             if returnedImageData != nil {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.profile.image = UIImage(data: returnedImageData!)
+
                 })
             }
         }
         task.resume()
     }
+    
+    func prepareMap(){
+        let tweetAnnotation = MKPointAnnotation()
+        tweetAnnotation.coordinate = tweetCoordinates
+        self.mapView.addAnnotation(tweetAnnotation)
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01,0.01)
+        let viewRegion:MKCoordinateRegion = MKCoordinateRegion(center: tweetCoordinates, span: span)
+        self.mapView.setRegion(viewRegion, animated: true)
+
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

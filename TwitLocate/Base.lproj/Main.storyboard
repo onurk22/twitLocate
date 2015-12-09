@@ -125,25 +125,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-tB-1wX">
-                                <rect key="frame" x="26" y="73" width="87" height="76"/>
+                                <rect key="frame" x="26" y="93" width="87" height="76"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ke-0k-zDM">
-                                <rect key="frame" x="56" y="222" width="258" height="166"/>
+                                <rect key="frame" x="56" y="242" width="213" height="87"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i11-cG-KAk">
-                                <rect key="frame" x="56" y="174" width="167" height="21"/>
+                                <rect key="frame" x="56" y="194" width="167" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="SIY-VJ-ZjP">
+                                <rect key="frame" x="43" y="353" width="243" height="190"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="desc" destination="8ke-0k-zDM" id="fKD-FT-HTi"/>
+                        <outlet property="mapView" destination="SIY-VJ-ZjP" id="sl5-tP-9gl"/>
                         <outlet property="name" destination="i11-cG-KAk" id="99L-vq-rs4"/>
                         <outlet property="profile" destination="oPI-tB-1wX" id="IZg-7J-Vsw"/>
                     </connections>
